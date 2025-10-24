@@ -1,0 +1,169 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    LIVE SERVER UPLOAD LIST                                 ║
+║                  Upload to: bagovetims.bccbsis.com                        ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+TOTAL FILES TO UPLOAD: 10  ⚠️ UPDATED - CRITICAL FILE ADDED
+
+───────────────────────────────────────────────────────────────────────────────
+PRIORITY 1: CORE FILES (Upload First)
+───────────────────────────────────────────────────────────────────────────────
+
+☐ 1. capstone/includes/arima_forecaster.php
+     • Added validateForecastAccuracy() method
+     • Removed sample data generation
+     • Fixed JSON output
+
+☐ 2. capstone/includes/sample_data_generator.php
+     • Removed closing PHP tag
+     • Fixed JSON compatibility
+
+
+───────────────────────────────────────────────────────────────────────────────
+PRIORITY 2: API ENDPOINTS (Upload Second)
+───────────────────────────────────────────────────────────────────────────────
+
+☐ 3. capstone/get_ml_insights_enhanced.php (★ NEW FILE)
+     • Main ML insights API
+     • No sample data
+     • Clean JSON output
+
+☐ 4. capstone/get_pharmaceuticals.php (★ NEW FILE)
+     • Pharmaceutical list for dropdown
+     • Simplified and clean
+
+☐ 5. capstone/get_pharmaceutical_forecast.php
+     • Fixed closing PHP tag
+     • Clean JSON output
+
+☐ 6. capstone/get_livestock_forecast.php (★ NEW FILE)
+     • Livestock forecasting endpoint
+     • Includes accuracy calculation
+
+☐ 7. capstone/get_poultry_forecast.php (★ NEW FILE)
+     • Poultry forecasting endpoint
+     • Includes accuracy calculation
+
+
+───────────────────────────────────────────────────────────────────────────────
+PRIORITY 3: BACKUP/SYNC FILES (Upload Last)
+───────────────────────────────────────────────────────────────────────────────
+
+☐ 8. capstone/ml_system/includes/arima_forecaster.php
+     • Synchronized with main version
+
+☐ 9. capstone/ml_system/api/get_ml_insights_enhanced.php
+     • Synchronized with root version
+
+
+───────────────────────────────────────────────────────────────────────────────
+⚠️ PRIORITY 4: CRITICAL PAGE UPDATE (MUST UPLOAD!)
+───────────────────────────────────────────────────────────────────────────────
+
+☐ 10. capstone/admin_ml_insights.php ⭐⭐⭐ CRITICAL
+      • Updated endpoint from get_ml_insights_flask.php to get_ml_insights_enhanced.php
+      • Fixes 404 error on live server
+      • WITHOUT THIS FILE, PAGE WILL NOT WORK!
+
+
+═══════════════════════════════════════════════════════════════════════════════
+WHAT GETS FIXED AFTER UPLOAD
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ No more 404 (Not Found) errors
+✓ No more 500 (Internal Server Error)
+✓ No more JSON parse errors
+✓ No more "validateForecastAccuracy not found" errors
+✓ ML insights load perfectly
+✓ Pharmaceutical dropdown works
+✓ All forecasts generate correctly
+✓ 100% real data (no fake/sample data)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+AFTER UPLOAD - TEST THESE URLs
+═══════════════════════════════════════════════════════════════════════════════
+
+1. https://bagovetims.bccbsis.com/admin_dashboard.php
+   → ML insights section should load without errors
+
+2. https://bagovetims.bccbsis.com/admin_ml_insights.php
+   → Full ML dashboard should work with all features
+
+3. Browser Console (F12):
+   → Should show NO red errors
+   → Should show NO 404 or 500 errors
+
+
+═══════════════════════════════════════════════════════════════════════════════
+UPLOAD METHODS
+═══════════════════════════════════════════════════════════════════════════════
+
+Option 1: FileZilla/FTP Client
+  1. Connect to your server
+  2. Navigate to /public_html/capstone/ (or your capstone folder)
+  3. Upload files maintaining folder structure
+  4. Overwrite existing files when prompted
+
+Option 2: cPanel File Manager
+  1. Login to cPanel
+  2. Open File Manager
+  3. Navigate to capstone folder
+  4. Upload files one by one or as ZIP
+  5. Extract if using ZIP
+
+Option 3: Command Line (if you have SSH access)
+  scp -r capstone/* user@bagovetims.bccbsis.com:/path/to/capstone/
+
+
+═══════════════════════════════════════════════════════════════════════════════
+IMPORTANT NOTES
+═══════════════════════════════════════════════════════════════════════════════
+
+• Maintain exact folder structure when uploading
+• File permissions should be 644 or 755
+• Clear browser cache after upload (Ctrl + Shift + Del)
+• May need to restart PHP-FPM or Apache (if you have access)
+• Make sure config.env.php exists on live server with correct DB credentials
+
+
+═══════════════════════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════════════════
+
+If errors persist after upload:
+
+1. Verify all 9 files uploaded successfully
+2. Check file permissions (should be readable)
+3. Check server error logs
+4. Test individual endpoints to identify issues
+5. Clear PHP opcache if available
+
+
+═══════════════════════════════════════════════════════════════════════════════
+✓ UPLOAD COMPLETE CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════
+
+☐ All 9 files uploaded
+☐ Folder structure maintained
+☐ Admin dashboard tested - no errors
+☐ ML insights page tested - works perfectly
+☐ Browser console checked - no red errors
+☐ Pharmaceutical dropdown populates
+☐ Forecasts generate correctly
+☐ ★ SUCCESS - Everything working!
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Date: October 15, 2025
+Purpose: Fix ML insights errors and remove sample data generation
+Status: Ready to upload
+
+Questions? Review the detailed documentation in:
+  • LIVE_SERVER_UPLOAD_CHECKLIST.md
+  • ML_FIXES_SUMMARY.md
+  • SAMPLE_DATA_REMOVAL_SUMMARY.md
+
+═══════════════════════════════════════════════════════════════════════════════
+

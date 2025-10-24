@@ -1,0 +1,47 @@
+<!-- Barcode Scanner Modal -->
+<div id="barcode-scanner-modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);">
+    <div style="position: relative; background-color: #fefefe; margin: 5% auto; padding: 20px; border: 1px solid #888; width: 90%; max-width: 600px; border-radius: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2 style="margin: 0; color: #333;">Barcode Scanner</h2>
+            <button id="close-scanner-btn" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #aaa;">&times;</button>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <p style="color: #666; margin-bottom: 15px;">Position the barcode within the camera view or upload an image file</p>
+            
+            <!-- Camera View -->
+            <div id="camera-container" style="position: relative; margin-bottom: 20px;">
+                <video id="barcode-video" style="width: 100%; max-width: 500px; height: auto; border: 2px solid #ddd; border-radius: 5px;" autoplay muted playsinline></video>
+                <canvas id="barcode-canvas" style="display: none;"></canvas>
+            </div>
+            
+            <!-- File Upload Option -->
+            <div style="margin-bottom: 20px;">
+                <label for="barcode-file-input" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; border-radius: 5px; cursor: pointer; text-decoration: none;">
+                    📁 Upload Image File
+                </label>
+                <input type="file" id="barcode-file-input" accept="image/*" style="display: none;">
+            </div>
+            
+            <!-- Instructions -->
+            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; text-align: left;">
+                <h4 style="margin-top: 0; color: #333;">Instructions:</h4>
+                <ul style="margin: 0; padding-left: 20px; color: #666;">
+                    <li>Ensure the barcode is clearly visible and well-lit</li>
+                    <li>Hold the camera steady and wait for automatic detection</li>
+                    <li>Or upload a clear image file containing the barcode</li>
+                    <li>Only residents from Bago City, Negros Occidental will be accepted</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <button id="close-scanner-btn" style="padding: 10px 20px; background-color: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px;">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Barcode Scanner Button (to be added to forms) -->
+<button type="button" id="scan-barcode-btn" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px;">
+    📷 Scan Barcode
+</button>

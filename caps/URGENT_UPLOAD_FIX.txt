@@ -1,0 +1,70 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                      ⚠️ URGENT ADDITIONAL FILE NEEDED                      ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+ISSUE: Live server shows error:
+  "get_ml_insights_flask.php:1 Failed to load resource: 404"
+
+CAUSE: Your live server has an OLD version of admin_ml_insights.php
+       that calls the wrong endpoint (get_ml_insights_flask.php)
+
+SOLUTION: Upload the updated admin_ml_insights.php file
+
+═══════════════════════════════════════════════════════════════════════════════
+ADD THIS FILE TO YOUR UPLOAD LIST
+═══════════════════════════════════════════════════════════════════════════════
+
+☐ 10. capstone/admin_ml_insights.php
+      • Updated to call get_ml_insights_enhanced.php
+      • Fixed endpoint references
+      • CRITICAL FILE - Must upload!
+
+═══════════════════════════════════════════════════════════════════════════════
+UPDATED COMPLETE FILE LIST (10 FILES TOTAL)
+═══════════════════════════════════════════════════════════════════════════════
+
+PRIORITY 1 - CORE FILES:
+  ☐ 1. capstone/includes/arima_forecaster.php
+  ☐ 2. capstone/includes/sample_data_generator.php
+
+PRIORITY 2 - API ENDPOINTS:
+  ☐ 3. capstone/get_ml_insights_enhanced.php (NEW)
+  ☐ 4. capstone/get_pharmaceuticals.php (NEW)
+  ☐ 5. capstone/get_pharmaceutical_forecast.php
+  ☐ 6. capstone/get_livestock_forecast.php (NEW)
+  ☐ 7. capstone/get_poultry_forecast.php (NEW)
+
+PRIORITY 3 - BACKUP FILES:
+  ☐ 8. capstone/ml_system/includes/arima_forecaster.php
+  ☐ 9. capstone/ml_system/api/get_ml_insights_enhanced.php
+
+⚠️ PRIORITY 4 - CRITICAL PAGE FIX:
+  ☐ 10. capstone/admin_ml_insights.php ⭐ MUST UPLOAD!
+
+═══════════════════════════════════════════════════════════════════════════════
+WHY THIS IS NEEDED
+═══════════════════════════════════════════════════════════════════════════════
+
+Your live server's admin_ml_insights.php is calling:
+  ❌ get_ml_insights_flask.php (OLD - doesn't exist)
+
+Your local admin_ml_insights.php is calling:
+  ✅ get_ml_insights_enhanced.php (NEW - correct)
+
+Without uploading admin_ml_insights.php, the page will keep trying to load
+the wrong file and you'll keep getting 404 errors.
+
+═══════════════════════════════════════════════════════════════════════════════
+AFTER UPLOADING THIS FILE
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ 404 error will disappear
+✅ ML insights will load correctly
+✅ admin_ml_insights.php will work perfectly
+
+═══════════════════════════════════════════════════════════════════════════════
+
+UPLOAD THIS FILE NOW: capstone/admin_ml_insights.php
+
+═══════════════════════════════════════════════════════════════════════════════
+

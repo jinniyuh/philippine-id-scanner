@@ -1,0 +1,132 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║           🚨 URGENT FIX FOR LIVE SERVER 404 ERROR                         ║
+║                  get_ml_insights_flask.php Not Found                      ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+ERROR ON LIVE SERVER:
+  "get_ml_insights_flask.php:1 Failed to load resource: 404"
+
+CAUSE:
+  Your live server's admin_ml_insights.php is calling the WRONG file
+
+
+═══════════════════════════════════════════════════════════════════════════════
+SOLUTION 1: UPLOAD THE UPDATED FILE (RECOMMENDED) ⭐
+═══════════════════════════════════════════════════════════════════════════════
+
+Simply upload this file to your live server:
+
+  📁 capstone/admin_ml_insights.php
+
+This will automatically fix the endpoint call.
+
+STEPS:
+  1. Use FileZilla or cPanel File Manager
+  2. Navigate to: /public_html/capstone/
+  3. Upload: admin_ml_insights.php
+  4. Overwrite existing file when prompted
+  5. Refresh your browser
+  6. ✅ Error fixed!
+
+
+═══════════════════════════════════════════════════════════════════════════════
+SOLUTION 2: QUICK EDIT ON LIVE SERVER (If you have cPanel access)
+═══════════════════════════════════════════════════════════════════════════════
+
+If you want to make a quick edit directly on the live server:
+
+STEPS:
+  1. Login to cPanel
+  2. Open File Manager
+  3. Navigate to: capstone/admin_ml_insights.php
+  4. Click "Edit"
+  5. Find this line (around line 579):
+     
+     ❌ OLD LINE:
+     const response = await fetch('get_ml_insights_flask.php');
+     
+  6. Change it to:
+     
+     ✅ NEW LINE:
+     const response = await fetch('get_ml_insights_enhanced.php');
+     
+  7. Click "Save Changes"
+  8. Refresh your browser
+  9. ✅ Error fixed!
+
+EXACT CHANGE:
+  Replace: get_ml_insights_flask.php
+  With:    get_ml_insights_enhanced.php
+
+
+═══════════════════════════════════════════════════════════════════════════════
+WHICH SOLUTION SHOULD I USE?
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Use SOLUTION 1 if:
+  • You're already uploading other files
+  • You want to ensure everything is up-to-date
+  • You prefer a complete file replacement
+
+✅ Use SOLUTION 2 if:
+  • You need a quick temporary fix
+  • You have cPanel access
+  • You're comfortable editing code directly
+
+
+═══════════════════════════════════════════════════════════════════════════════
+AFTER THE FIX
+═══════════════════════════════════════════════════════════════════════════════
+
+Once fixed, your admin_ml_insights.php will call:
+  ✅ get_ml_insights_enhanced.php (correct endpoint)
+
+Instead of:
+  ❌ get_ml_insights_flask.php (doesn't exist)
+
+And you must have uploaded:
+  ✅ capstone/get_ml_insights_enhanced.php (the actual API file)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+COMPLETE UPDATED FILE LIST
+═══════════════════════════════════════════════════════════════════════════════
+
+Don't forget to upload ALL these files:
+
+  1. capstone/includes/arima_forecaster.php
+  2. capstone/includes/sample_data_generator.php
+  3. capstone/get_ml_insights_enhanced.php ⭐ (The API endpoint)
+  4. capstone/get_pharmaceuticals.php
+  5. capstone/get_pharmaceutical_forecast.php
+  6. capstone/get_livestock_forecast.php
+  7. capstone/get_poultry_forecast.php
+  8. capstone/ml_system/includes/arima_forecaster.php
+  9. capstone/ml_system/api/get_ml_insights_enhanced.php
+ 10. capstone/admin_ml_insights.php ⭐⭐⭐ (The page that calls it)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+VERIFICATION
+═══════════════════════════════════════════════════════════════════════════════
+
+After applying the fix:
+
+1. Open: https://bagovetims.bccbsis.com/admin_ml_insights.php
+2. Press F12 (open browser console)
+3. Refresh the page
+4. Check console - should see:
+   
+   ✅ Loading ML insights...
+   ✅ GET https://bagovetims.bccbsis.com/get_ml_insights_enhanced.php 200 OK
+   
+   NOT:
+   ❌ GET https://bagovetims.bccbsis.com/get_ml_insights_flask.php 404 Not Found
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚡ QUICK ACTION: Upload admin_ml_insights.php NOW to fix the 404 error!
+
+═══════════════════════════════════════════════════════════════════════════════
+

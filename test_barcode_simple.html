@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Barcode Test - No Login Required</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Simple Barcode Test</h1>
+        <p>Test barcode scanning without login requirement (for registration process).</p>
+        
+        <div class="form-group">
+            <label for="barcode-image">Upload Image with Barcode:</label>
+            <input type="file" id="barcode-image" accept="image/*">
+        </div>
+        
+        <div class="form-group">
+            <button class="btn" onclick="testBarcodeScan()">📷 Test Barcode Scan</button>
+            <button class="btn" onclick="testWithSampleData()" style="background-color: #28a745;">🧪 Test Sample Data</button>
+        </div>
+        
+        <div id="status"></div>
+        <div id="results"></div>
+        
+        <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 20px;">
+            <h3>📋 Expected Barcode Format</h3>
+            <p>The barcode should contain JSON data like:</p>
+            <pre style="background: #f1f1f1; padding: 10px; border-radius: 3px;">
+{
+    "name": "Juan Dela Cruz",
+    "barangay": "Poblacion",
+    "city": "Bago City",
+    "province": "Negros Occidental"
+}
+            </pre>
+        </div>
+    </div>
+
+    <script>
+        async function testBarcodeScan() {
+            const fileInput = document.getElementById('barcode-image');
+            const statusDiv = document.getElementById('status');
+            const resultsDiv = document.getElementById('results');
+            
+            if (!fileInput.files || !fileInput.files[0]) {
+                showStatus('Please select an image file first.', 'error');
+                return;
+            }
+            
+            showStatus('Scanning barcode...', 'info');
+            resultsDiv.innerHTML = '';
+            
+            try {
+                const formData = new FormData();
+                formData.append('barcode_image', fileInput.files[0]);
+                
+                const response = await fetch('barcode_handler.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus('✅ Barcode scanned successfully!', 'success');
+                    showResults(result);
+                } else {
+                    showStatus(`❌ Scan failed: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                showStatus(`❌ Error: ${error.message}`, 'error');
+            }
+        }
+        
+        function testWithSampleData() {
+            const sampleResult = {
+                success: true,
+                name: 'Maria Santos',
+                barangay: 'Dulao',
+                city: 'Bago City',
+                province: 'Negros Occidental',
+                is_bago_resident: true
+            };
+            
+            showStatus('✅ Sample barcode test successful!', 'success');
+            showResults(sampleResult);
+        }
+        
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+        
+        function showResults(result) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h3>📊 Scan Results</h3>
+                    <p><strong>Name:</strong> ${result.name || 'N/A'}</p>
+                    <p><strong>Barangay:</strong> ${result.barangay || 'N/A'}</p>
+                    <p><strong>City:</strong> ${result.city || 'N/A'}</p>
+                    <p><strong>Province:</strong> ${result.province || 'N/A'}</p>
+                    <p><strong>Bago Resident:</strong> ${result.is_bago_resident ? '✅ Yes' : '❌ No'}</p>
+                    ${result.error ? `<p><strong>Error:</strong> ${result.error}</p>` : ''}
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

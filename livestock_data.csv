@@ -1,0 +1,25 @@
+barangay,latitude,longitude,animal_count,animal_type,health_status,disease_risk
+Abuanan,10.5375,122.8333,45,Livestock,Healthy,Low
+Alianza,10.5417,122.8417,38,Poultry,Healthy,Low
+Atipuluan,10.5458,122.8500,52,Livestock,Needs Attention,Medium
+Bacong-Montilla,10.5500,122.8583,67,Livestock,Healthy,Low
+Bagroy,10.5542,122.8667,29,Poultry,Healthy,Low
+Balingasag,10.5583,122.8750,41,Livestock,Healthy,Low
+Binubuhan,10.5625,122.8833,58,Livestock,Needs Attention,Medium
+Busay,10.5667,122.8917,33,Poultry,Healthy,Low
+Calumangan,10.5708,122.9000,44,Livestock,Healthy,Low
+Caridad,10.5750,122.9083,61,Livestock,Needs Attention,Medium
+Don Jorge L. Araneta,10.5792,122.9167,35,Poultry,Healthy,Low
+Dulao,10.5833,122.9250,49,Livestock,Healthy,Low
+Ilijan,10.5875,122.9333,42,Livestock,Healthy,Low
+Lag-Asan,10.5917,122.9417,56,Livestock,Needs Attention,High
+Ma-ao,10.5958,122.9500,38,Poultry,Healthy,Low
+Mailum,10.6000,122.9583,51,Livestock,Healthy,Low
+Malingin,10.6042,122.9667,63,Livestock,Needs Attention,Medium
+Napoles,10.6083,122.9750,34,Poultry,Healthy,Low
+Pacol,10.6125,122.9833,47,Livestock,Healthy,Low
+Poblacion,10.6167,122.9917,72,Livestock,Needs Attention,High
+Sagasa,10.6208,123.0000,39,Poultry,Healthy,Low
+Tabunan,10.6250,123.0083,54,Livestock,Healthy,Low
+Taloc,10.6292,123.0167,46,Livestock,Healthy,Low
+Sampinit,10.6333,123.0250,41,Poultry,Healthy,Low

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Specific OCR Text</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        textarea { width: 100%; height: 200px; font-family: monospace; }
+        button { padding: 10px 20px; font-size: 16px; margin: 10px 0; }
+        .result { padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .debug { background-color: #f8f9fa; color: #495057; border: 1px solid #dee2e6; margin: 5px 0; padding: 10px; font-family: monospace; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Specific OCR Text</h1>
+    
+    <p><strong>Instructions:</strong> Paste the OCR text from your console logs below and click "Test Validation"</p>
+    
+    <textarea id="ocrInput" placeholder="Paste OCR text here..."></textarea>
+    
+    <button onclick="testValidation()">Test Validation</button>
+    <button onclick="clearResults()">Clear Results</button>
+    
+    <div id="results"></div>
+
+    <script>
+        function testValidation() {
+            console.clear();
+            const ocrText = document.getElementById('ocrInput').value;
+            
+            if (!ocrText.trim()) {
+                alert('Please paste OCR text first!');
+                return;
+            }
+            
+            console.log('=== TESTING SPECIFIC OCR TEXT ===');
+            console.log('OCR Text:', ocrText);
+            
+            const result = validateComprehensiveBagoResident(ocrText);
+            
+            displayResults(result, ocrText);
+        }
+        
+        function validateComprehensiveBagoResident(ocrText) {
+            const logs = [];
+            
+            logs.push('=== VALIDATION START ===');
+            logs.push(`OCR Text length: ${ocrText.length}`);
+            logs.push(`First 100 chars: ${ocrText.substring(0, 100)}`);
+            logs.push(`Last 100 chars: ${ocrText.substring(Math.max(0, ocrText.length - 100))}`);
+            
+            // Show text around "BAGO" if it exists
+            if (ocrText.toUpperCase().includes('BAGO')) {
+                const bagoIndex = ocrText.toUpperCase().indexOf('BAGO');
+                logs.push(`📍 Text around "BAGO": ${ocrText.substring(Math.max(0, bagoIndex - 50), bagoIndex + 100)}`);
+            }
+            
+            // Show text around "NEGROS" if it exists
+            if (ocrText.toUpperCase().includes('NEGROS')) {
+                const negrosIndex = ocrText.toUpperCase().indexOf('NEGROS');
+                logs.push(`📍 Text around "NEGROS": ${ocrText.substring(Math.max(0, negrosIndex - 30), negrosIndex + 50)}`);
+            }
+            
+            // Step 1: Check for other cities
+            logs.push('\n--- STEP 1: Check for other cities ---');
+            const otherCities = [
+                'PULUPANDAN', 'TALISAY', 'BACOLOD', 'SILAY', 'VICTORIAS', 'CADIZ', 
+                'SAGAY', 'ESCALANTE', 'MANAPLA', 'VALLADOLID', 'MURCIA', 'SALVADOR BENEDICTO',
+                'LA CARLOTA', 'LA CASTELLANA', 'MOISES PADILLA', 'ISABELA', 'BINALBAGAN',
+                'HIMAMAYLAN', 'KABANKALAN', 'ILOG', 'CAUAYAN', 'CANDONI', 'HINIGARAN',
+                'PONTEVEDRA', 'HINOBA AN', 'SIPALAY', 'CALATRAVA', 'TOBOSO', 'SAN CARLOS',
+                'MANILA'
+            ];
+            
+            let foundOtherCity = null;
+            for (let city of otherCities) {
+                if (ocrText.toUpperCase().includes(city.toUpperCase())) {
+                    foundOtherCity = city;
+                    logs.push(`❌ Found other city: ${city}`);
+                    break;
+                }
+            }
+            
+            if (foundOtherCity) {
+                logs.push('❌ REJECTED: Other city detected');
+                return { valid: false, reason: `Other city detected: ${foundOtherCity}`, logs };
+            }
+            
+            logs.push('✅ No other cities found');
+            
+            // Step 2: Check for STRICT Bago City + Negros Occidental patterns
+            logs.push('\n--- STEP 2: Check for STRICT patterns ---');
+            const strictBagoPatterns = [
+                'BAGO CITY NEGROS OCCIDENTAL',
+                'CITY OF BAGO NEGROS OCCIDENTAL',
+                'CITY OF H L BAGO NEGROS OCCIDENTAL',
+                'CITY OF H.L BAGO NEGROS OCCIDENTAL',
+                'CITY OF HL BAGO NEGROS OCCIDENTAL',
+                'CHFY 0FBAGO NEGROS OCCIDENTAL',
+                'CHFY OF BAGO NEGROS OCCIDENTAL'
+            ];
+            
+            let foundBagoIndicator = false;
+            let matchedPattern = null;
+            
+            for (let pattern of strictBagoPatterns) {
+                if (ocrText.toUpperCase().includes(pattern.toUpperCase())) {
+                    foundBagoIndicator = true;
+                    matchedPattern = pattern;
+                    logs.push(`✅ Found STRICT pattern: ${pattern}`);
+                    break;
+                }
+            }
+            
+            if (!foundBagoIndicator) {
+                logs.push('❌ No STRICT pattern found');
+                
+                // Step 3: Flexible pattern matching
+                logs.push('\n--- STEP 3: Flexible pattern matching ---');
+                const hasBago = ocrText.toUpperCase().includes('BAGO');
+                const hasNegrosOccidental = ocrText.toUpperCase().includes('NEGROS OCCIDENTAL');
+                
+                logs.push(`Has BAGO: ${hasBago}`);
+                logs.push(`Has NEGROS OCCIDENTAL: ${hasNegrosOccidental}`);
+                
+                if (hasBago && hasNegrosOccidental) {
+                    logs.push('✅ Both BAGO and NEGROS OCCIDENTAL found!');
+                    logs.push('✅ Flexible pattern match SUCCESS');
+                    foundBagoIndicator = true;
+                    matchedPattern = 'BAGO + NEGROS OCCIDENTAL (flexible match)';
+                } else {
+                    logs.push('❌ Flexible pattern match FAILED');
+                    if (!hasBago) logs.push('   - Missing: BAGO');
+                    if (!hasNegrosOccidental) logs.push('   - Missing: NEGROS OCCIDENTAL');
+                }
+            }
+            
+            if (foundBagoIndicator) {
+                logs.push(`\n✅ ACCEPTED: Valid Bago City resident`);
+                logs.push(`Matched pattern: ${matchedPattern}`);
+                return { valid: true, reason: `Matched pattern: ${matchedPattern}`, logs };
+            } else {
+                logs.push('\n❌ REJECTED: No valid Bago City pattern found');
+                return { valid: false, reason: 'No valid Bago City pattern found', logs };
+            }
+        }
+        
+        function displayResults(result, ocrText) {
+            const resultsDiv = document.getElementById('results');
+            
+            const statusClass = result.valid ? 'success' : 'error';
+            const statusIcon = result.valid ? '✅' : '❌';
+            
+            let html = `
+                <div class="result ${statusClass}">
+                    <h3>${statusIcon} ${result.valid ? 'ACCEPTED' : 'REJECTED'}</h3>
+                    <strong>Reason:</strong> ${result.reason}
+                </div>
+                
+                <h3>Detailed Logs:</h3>
+            `;
+            
+            result.logs.forEach(log => {
+                html += `<div class="debug">${log}</div>`;
+            });
+            
+            resultsDiv.innerHTML = html;
+            
+            // Also log to console
+            console.log('=== VALIDATION RESULT ===');
+            console.log('Valid:', result.valid);
+            console.log('Reason:', result.reason);
+            console.log('\n=== DETAILED LOGS ===');
+            result.logs.forEach(log => console.log(log));
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('ocrInput').value = '';
+        }
+    </script>
+</body>
+</html>

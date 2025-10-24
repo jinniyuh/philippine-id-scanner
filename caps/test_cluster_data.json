@@ -1,0 +1,231 @@
+{
+  "cluster_data": [
+    {
+      "latitude": 10.5375,
+      "longitude": 122.8333,
+      "cluster_id": 2,
+      "cluster_color": "#45B7D1",
+      "animal_count": 45,
+      "risk_score": 0.2,
+      "barangay": "Abuanan"
+    },
+    {
+      "latitude": 10.5417,
+      "longitude": 122.8417,
+      "cluster_id": 0,
+      "cluster_color": "#FF6B6B",
+      "animal_count": 38,
+      "risk_score": 0.2,
+      "barangay": "Alianza"
+    },
+    {
+      "latitude": 10.5458,
+      "longitude": 122.85,
+      "cluster_id": 2,
+      "cluster_color": "#45B7D1",
+      "animal_count": 52,
+      "risk_score": 0.6,
+      "barangay": "Atipuluan"
+    },
+    {
+      "latitude": 10.55,
+      "longitude": 122.8583,
+      "cluster_id": 1,
+      "cluster_color": "#4ECDC4",
+      "animal_count": 67,
+      "risk_score": 0.2,
+      "barangay": "Bacong-Montilla"
+    },
+    {
+      "latitude": 10.5542,
+      "longitude": 122.8667,
+      "cluster_id": 0,
+      "cluster_color": "#FF6B6B",
+      "animal_count": 29,
+      "risk_score": 0.2,
+      "barangay": "Bagroy"
+    },
+    {
+      "latitude": 10.5583,
+      "longitude": 122.875,
+      "cluster_id": 0,
+      "cluster_color": "#FF6B6B",
+      "animal_count": 41,
+      "risk_score": 0.2,
+      "barangay": "Balingasag"
+    },
+    {
+      "latitude": 10.5625,
+      "longitude": 122.8833,
+      "cluster_id": 1,
+      "cluster_color": "#4ECDC4",
+      "animal_count": 58,
+      "risk_score": 0.6,
+      "barangay": "Binubuhan"
+    },
+    {
+      "latitude": 10.5667,
+      "longitude": 122.8917,
+      "cluster_id": 0,
+      "cluster_color": "#FF6B6B",
+      "animal_count": 33,
+      "risk_score": 0.2,
+      "barangay": "Busay"
+    },
+    {
+      "latitude": 10.5708,
+      "longitude": 122.9,
+      "cluster_id": 2,
+      "cluster_color": "#45B7D1",
+      "animal_count": 44,
+      "risk_score": 0.2,
+      "barangay": "Calumangan"
+    },
+    {
+      "latitude": 10.575,
+      "longitude": 122.9083,
+      "cluster_id": 1,
+      "cluster_color": "#4ECDC4",
+      "animal_count": 61,
+      "risk_score": 0.6,
+      "barangay": "Caridad"
+    },
+    {
+      "latitude": 10.5792,
+      "longitude": 122.9167,
+      "cluster_id": 0,
+      "cluster_color": "#FF6B6B",
+      "animal_count": 35,
+      "risk_score": 0.2,
+      "barangay": "Don Jorge L. Araneta"
+    },
+    {
+      "latitude": 10.5833,
+      "longitude": 122.925,
+      "cluster_id": 2,
+      "cluster_color": "#45B7D1",
+      "animal_count": 49,
+      "risk_score": 0.2,
+      "barangay": "Dulao"
+    },
+    {
+      "latitude": 10.5875,
+      "longitude": 122.9333,
+      "cluster_id": 0,
+      "cluster_color": "#FF6B6B",
+      "animal_count": 42,
+      "risk_score": 0.2,
+      "barangay": "Ilijan"
+    },
+    {
+      "latitude": 10.5917,
+      "longitude": 122.9417,
+      "cluster_id": 2,
+      "cluster_color": "#45B7D1",
+      "animal_count": 56,
+      "risk_score": 1.0,
+      "barangay": "Lag-Asan"
+    },
+    {
+      "latitude": 10.5958,
+      "longitude": 122.95,
+      "cluster_id": 0,
+      "cluster_color": "#FF6B6B",
+      "animal_count": 38,
+      "risk_score": 0.2,
+      "barangay": "Ma-ao"
+    },
+    {
+      "latitude": 10.6,
+      "longitude": 122.9583,
+      "cluster_id": 2,
+      "cluster_color": "#45B7D1",
+      "animal_count": 51,
+      "risk_score": 0.2,
+      "barangay": "Mailum"
+    },
+    {
+      "latitude": 10.6042,
+      "longitude": 122.9667,
+      "cluster_id": 1,
+      "cluster_color": "#4ECDC4",
+      "animal_count": 63,
+      "risk_score": 0.6,
+      "barangay": "Malingin"
+    },
+    {
+      "latitude": 10.6083,
+      "longitude": 122.975,
+      "cluster_id": 0,
+      "cluster_color": "#FF6B6B",
+      "animal_count": 34,
+      "risk_score": 0.2,
+      "barangay": "Napoles"
+    },
+    {
+      "latitude": 10.6125,
+      "longitude": 122.9833,
+      "cluster_id": 2,
+      "cluster_color": "#45B7D1",
+      "animal_count": 47,
+      "risk_score": 0.2,
+      "barangay": "Pacol"
+    },
+    {
+      "latitude": 10.6167,
+      "longitude": 122.9917,
+      "cluster_id": 1,
+      "cluster_color": "#4ECDC4",
+      "animal_count": 72,
+      "risk_score": 1.0,
+      "barangay": "Poblacion"
+    },
+    {
+      "latitude": 10.6208,
+      "longitude": 123.0,
+      "cluster_id": 0,
+      "cluster_color": "#FF6B6B",
+      "animal_count": 39,
+      "risk_score": 0.2,
+      "barangay": "Sagasa"
+    },
+    {
+      "latitude": 10.625,
+      "longitude": 123.0083,
+      "cluster_id": 2,
+      "cluster_color": "#45B7D1",
+      "animal_count": 54,
+      "risk_score": 0.2,
+      "barangay": "Tabunan"
+    },
+    {
+      "latitude": 10.6292,
+      "longitude": 123.0167,
+      "cluster_id": 2,
+      "cluster_color": "#45B7D1",
+      "animal_count": 46,
+      "risk_score": 0.2,
+      "barangay": "Taloc"
+    },
+    {
+      "latitude": 10.6333,
+      "longitude": 123.025,
+      "cluster_id": 0,
+      "cluster_color": "#FF6B6B",
+      "animal_count": 41,
+      "risk_score": 0.2,
+      "barangay": "Sampinit"
+    }
+  ],
+  "cluster_colors": {
+    "0": "#FF6B6B",
+    "1": "#4ECDC4",
+    "2": "#45B7D1"
+  },
+  "metadata": {
+    "total_clusters": 3,
+    "clustering_enabled": true,
+    "clustering_method": "K-Means",
+    "silhouette_score": 0.5085247685281572
+  }
+}

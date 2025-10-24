@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Strict Bago City Validation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .debug { background-color: #f8f9fa; color: #495057; border: 1px solid #dee2e6; }
+        .info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Strict Bago City Validation</h1>
+    
+    <div class="info">
+        <strong>STRICT VALIDATION RULE:</strong><br>
+        ✅ VALID: Contains "BAGO CITY NEGROS OCCIDENTAL" OR "CITY OF BAGO NEGROS OCCIDENTAL"<br>
+        ❌ REJECT: Does NOT contain these exact patterns
+    </div>
+    
+    <button onclick="testStrictValidation()">Test Strict Validation</button>
+    
+    <div id="results" class="debug">
+        Click the button to test strict validation
+    </div>
+
+    <script>
+        function testStrictValidation() {
+            console.clear();
+            console.log('=== TESTING STRICT BAGO CITY VALIDATION ===');
+            
+            // Test cases
+            const testCases = [
+                {
+                    name: "CANDELARIO - LAG ASAN (Should ACCEPT)",
+                    ocrText: "CANDELARIO, PAUL JOSHUA, MACAHILAS BLK 21 LOT 16 MARINA BAY SUBD LAG ASAN CITY OF H L BAGO NEGROS OCCIDENTAL PHILIPPINES 6101",
+                    expected: false // This should now REJECT because it doesn't have the exact pattern
+                },
+                {
+                    name: "CANDELARIO - CORRECTED (Should ACCEPT)",
+                    ocrText: "CANDELARIO, PAUL JOSHUA, MACAHILAS BLK 21 LOT 16 MARINA BAY SUBD LAG ASAN CITY OF BAGO NEGROS OCCIDENTAL PHILIPPINES 6101",
+                    expected: true
+                },
+                {
+                    name: "BACONG MONTILLA - CORRECTED (Should ACCEPT)",
+                    ocrText: "PUROK PINETREE BACONG MONTILLA CITY OF BAGO NEGROS OCCIDENTAL PHILIPPINES 6101",
+                    expected: true
+                },
+                {
+                    name: "BALINGASAG - BAGO CITY (Should ACCEPT)",
+                    ocrText: "RAFAEL SALAS DRIVE BALINGASAG BAGO CITY NEGROS OCCIDENTAL",
+                    expected: true
+                },
+                {
+                    name: "PULUPANDAN RESIDENT (Should REJECT)",
+                    ocrText: "BARANGAY TAPONG PLIL UPANDAN NEGROS OCCIDENTAL",
+                    expected: false
+                },
+                {
+                    name: "MANILA RESIDENT (Should REJECT)",
+                    ocrText: "BARANGAY 526 20NE 2 SAMPALOK MANILA CITY METRO MANILA",
+                    expected: false
+                },
+                {
+                    name: "BAGO CITY WITHOUT NEGROS OCCIDENTAL (Should REJECT)",
+                    ocrText: "SOME ADDRESS BAGO CITY PHILIPPINES",
+                    expected: false
+                }
+            ];
+            
+            let results = [];
+            
+            testCases.forEach((testCase, index) => {
+                console.log(`\n--- TEST ${index + 1}: ${testCase.name} ---`);
+                
+                const result = validateStrictBagoResident(testCase.ocrText);
+                const success = result === testCase.expected;
+                
+                console.log(`Expected: ${testCase.expected ? 'ACCEPT' : 'REJECT'}`);
+                console.log(`Actual: ${result ? 'ACCEPT' : 'REJECT'}`);
+                console.log(`Status: ${success ? '✅ PASS' : '❌ FAIL'}`);
+                
+                results.push({
+                    name: testCase.name,
+                    expected: testCase.expected ? 'ACCEPT' : 'REJECT',
+                    actual: result ? 'ACCEPT' : 'REJECT',
+                    success: success
+                });
+            });
+            
+            // Display results
+            displayResults(results);
+        }
+        
+        function validateStrictBagoResident(ocrText) {
+            // Copy the exact STRICT validation logic from login.php
+            
+            // Step 1: Check for other cities
+            const otherCities = [
+                'PULUPANDAN', 'TALISAY', 'BACOLOD', 'SILAY', 'VICTORIAS', 'CADIZ', 
+                'SAGAY', 'ESCALANTE', 'MANAPLA', 'VALLADOLID', 'MURCIA', 'SALVADOR BENEDICTO',
+                'LA CARLOTA', 'LA CASTELLANA', 'MOISES PADILLA', 'ISABELA', 'BINALBAGAN',
+                'HIMAMAYLAN', 'KABANKALAN', 'ILOG', 'CAUAYAN', 'CANDONI', 'HINIGARAN',
+                'PONTEVEDRA', 'HINOBA AN', 'SIPALAY', 'CALATRAVA', 'TOBOSO', 'SAN CARLOS'
+            ];
+            
+            for (let city of otherCities) {
+                if (ocrText.toUpperCase().includes(city.toUpperCase())) {
+                    return false; // REJECT immediately
+                }
+            }
+            
+            // Step 2: Check for STRICT Bago City + Negros Occidental patterns
+            const strictBagoPatterns = [
+                'BAGO CITY NEGROS OCCIDENTAL',
+                'CITY OF BAGO NEGROS OCCIDENTAL'
+            ];
+            
+            for (let pattern of strictBagoPatterns) {
+                if (ocrText.toUpperCase().includes(pattern.toUpperCase())) {
+                    return true; // ACCEPT
+                }
+            }
+            
+            return false; // REJECT if no strict pattern found
+        }
+        
+        function displayResults(results) {
+            const resultsDiv = document.getElementById('results');
+            
+            let html = '<h3>Strict Validation Test Results:</h3>';
+            
+            results.forEach((result, index) => {
+                const statusClass = result.success ? 'success' : 'error';
+                const statusIcon = result.success ? '✅' : '❌';
+                
+                html += `
+                    <div class="result ${statusClass}">
+                        <strong>${statusIcon} ${result.name}</strong><br>
+                        Expected: ${result.expected}<br>
+                        Actual: ${result.actual}<br>
+                        Status: ${result.success ? 'PASS' : 'FAIL'}
+                    </div>
+                `;
+            });
+            
+            const totalPassed = results.filter(r => r.success).length;
+            const totalTests = results.length;
+            
+            html += `
+                <div class="result ${totalPassed === totalTests ? 'success' : 'error'}">
+                    <strong>Overall Result: ${totalPassed}/${totalTests} tests passed</strong><br>
+                    ${totalPassed === totalTests ? 'Strict validation working correctly!' : 'Some tests failed - check the patterns!'}
+                </div>
+            `;
+            
+            resultsDiv.innerHTML = html;
+            
+            console.log(`\n=== FINAL RESULTS ===`);
+            console.log(`Passed: ${totalPassed}/${totalTests}`);
+            console.log(`Status: ${totalPassed === totalTests ? '✅ ALL PASS' : '❌ SOME FAIL'}`);
+        }
+    </script>
+</body>
+</html>

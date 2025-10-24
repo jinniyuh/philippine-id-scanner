@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Test Barcode - Bago City Veterinary IMS</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #007bff;
+        }
+        .qr-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        #qrcode {
+            display: inline-block;
+        }
+        .download-btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Generate Test Barcode</h1>
+        <p>Create a QR code with test data for the barcode scanning system.</p>
+        
+        <form id="barcode-form">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" value="Juan Dela Cruz" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="barangay">Barangay:</label>
+                <select id="barangay" name="barangay" required>
+                    <option value="Poblacion">Poblacion</option>
+                    <option value="Dulao">Dulao</option>
+                    <option value="Ma-ao">Ma-ao</option>
+                    <option value="Balingasag">Balingasag</option>
+                    <option value="Calumangan">Calumangan</option>
+                    <option value="Caridad">Caridad</option>
+                    <option value="Ilijan">Ilijan</option>
+                    <option value="Lag-asan">Lag-asan</option>
+                    <option value="Mailum">Mailum</option>
+                    <option value="Malingin">Malingin</option>
+                    <option value="Napoles">Napoles</option>
+                    <option value="Pacol">Pacol</option>
+                    <option value="Sagasa">Sagasa</option>
+                    <option value="Taloc">Taloc</option>
+                    <option value="Tigbao">Tigbao</option>
+                    <option value="Tinong-an">Tinong-an</option>
+                    <option value="Tuburan">Tuburan</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" value="Bago City" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="province">Province:</label>
+                <input type="text" id="province" name="province" value="Negros Occidental" readonly>
+            </div>
+            
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" onclick="generateQRCode()">🔧 Generate QR Code</button>
+                <button type="button" class="btn btn-secondary" onclick="clearForm()">🗑️ Clear</button>
+            </div>
+        </form>
+        
+        <div id="qr-result" style="display: none;">
+            <div class="result-box">
+                <h3>📱 Generated QR Code</h3>
+                <div class="qr-container">
+                    <div id="qrcode"></div>
+                    <div class="download-btn">
+                        <button class="btn btn-success" onclick="downloadQRCode()">📥 Download QR Code</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-box">
+                <h3>📋 JSON Data</h3>
+                <textarea id="json-data" rows="6" readonly></textarea>
+            </div>
+        </div>
+        
+        <div class="result-box">
+            <h3>📝 Instructions</h3>
+            <ol>
+                <li>Fill in the form above with test data</li>
+                <li>Click "Generate QR Code" to create a QR code</li>
+                <li>Download the QR code image</li>
+                <li>Use the QR code image to test the barcode scanning system</li>
+                <li>Go to <a href="test_barcode_public.php">test_barcode_public.php</a> to test scanning</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function generateQRCode() {
+            const name = document.getElementById('name').value;
+            const barangay = document.getElementById('barangay').value;
+            const city = document.getElementById('city').value;
+            const province = document.getElementById('province').value;
+            
+            if (!name || !barangay) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Create JSON data
+            const data = {
+                name: name,
+                barangay: barangay,
+                city: city,
+                province: province
+            };
+            
+            const jsonString = JSON.stringify(data, null, 2);
+            document.getElementById('json-data').value = jsonString;
+            
+            // Generate QR code
+            const qrContainer = document.getElementById('qrcode');
+            qrContainer.innerHTML = '';
+            
+            QRCode.toCanvas(qrContainer, jsonString, {
+                width: 300,
+                height: 300,
+                color: {
+                    dark: '#000000',
+                    light: '#FFFFFF'
+                }
+            }, function (error) {
+                if (error) {
+                    console.error('QR Code generation error:', error);
+                    alert('Error generating QR code: ' + error.message);
+                } else {
+                    document.getElementById('qr-result').style.display = 'block';
+                }
+            });
+        }
+        
+        function downloadQRCode() {
+            const canvas = document.querySelector('#qrcode canvas');
+            if (canvas) {
+                const link = document.createElement('a');
+                link.download = 'test_barcode_' + Date.now() + '.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            }
+        }
+        
+        function clearForm() {
+            document.getElementById('name').value = 'Juan Dela Cruz';
+            document.getElementById('barangay').value = 'Poblacion';
+            document.getElementById('qr-result').style.display = 'none';
+        }
+        
+        // Generate QR code on page load with default values
+        window.addEventListener('load', function() {
+            generateQRCode();
+        });
+    </script>
+</body>
+</html>

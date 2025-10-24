@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML System - Directory</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .main-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .section-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .file-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 3px solid #28a745;
+        }
+        .file-item i {
+            margin-right: 10px;
+            color: #667eea;
+        }
+        .badge-custom {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .status-online {
+            color: #28a745;
+        }
+        .status-offline {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-card">
+            <!-- Header -->
+            <div class="text-center mb-5">
+                <h1 class="display-4"><i class="fas fa-brain"></i> Machine Learning System</h1>
+                <p class="lead">Bago City Veterinary Office IMS</p>
+                <div class="mt-3">
+                    <span class="badge badge-custom bg-primary">Python Flask</span>
+                    <span class="badge badge-custom bg-success">scikit-learn</span>
+                    <span class="badge badge-custom bg-info">REST API</span>
+                </div>
+            </div>
+
+            <!-- Flask Status -->
+            <div class="section-card">
+                <h3><i class="fas fa-server"></i> Flask API Status</h3>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <p class="mb-0">Server: <strong>http://localhost:5000</strong></p>
+                        <p class="mb-0">Status: <span id="flask-status" class="status-offline">⚫ Offline</span></p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" onclick="checkFlaskStatus()">
+                            <i class="fas fa-sync-alt"></i> Check Status
+                        </button>
+                        <a href="api/test_flask_api.php" class="btn btn-success">
+                            <i class="fas fa-vial"></i> Test API
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="section-card">
+                <h3><i class="fas fa-chart-bar"></i> System Statistics</h3>
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <h2 class="text-primary">33</h2>
+                        <small class="text-muted">Total Files</small>
+                    </div>
+                    <div class="col-md-3">
+                        <h2 class="text-success">11</h2>
+                        <small class="text-muted">API Endpoints</small>
+                    </div>
+                    <div class="col-md-3">
+                        <h2 class="text-warning">9</h2>
+                        <small class="text-muted">Flask Routes</small>
+                    </div>
+                    <div class="col-md-3">
+                        <h2 class="text-info">0.32 MB</h2>
+                        <small class="text-muted">Total Size</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Components -->
+            <div class="section-card">
+                <h3><i class="fas fa-code"></i> API Components (11 files)</h3>
+                <div class="file-item">
+                    <i class="fas fa-file-code"></i>
+                    <strong>ml_flask_api.py</strong>
+                    <span class="badge bg-primary ms-2">Flask Server</span>
+                    <p class="mb-0 mt-2 text-muted">REST API with 9 endpoints (950+ lines)</p>
+                </div>
+                <div class="file-item">
+                    <i class="fab fa-php"></i>
+                    <strong>get_ml_insights_flask.php</strong>
+                    <span class="badge bg-info ms-2">ML Insights</span>
+                    <p class="mb-0 mt-2 text-muted">ML insights via Flask API</p>
+                </div>
+                <div class="file-item">
+                    <i class="fab fa-php"></i>
+                    <strong>get_health_risk_flask.php</strong>
+                    <span class="badge bg-danger ms-2">Health Risk</span>
+                    <p class="mb-0 mt-2 text-muted">Health risk predictions via Flask</p>
+                </div>
+                <div class="file-item">
+                    <i class="fab fa-php"></i>
+                    <strong>8 more PHP endpoints</strong>
+                    <span class="badge bg-secondary ms-2">Forecasting</span>
+                    <p class="mb-0 mt-2 text-muted">Pharmaceutical, livestock, poultry forecasts</p>
+                </div>
+            </div>
+
+            <!-- PHP ML Classes -->
+            <div class="section-card">
+                <h3><i class="fab fa-php"></i> PHP ML Classes (4 files)</h3>
+                <div class="file-item">
+                    <i class="fas fa-chart-line"></i>
+                    <strong>arima_forecaster.php</strong>
+                    <span class="badge bg-primary ms-2">ARIMA</span>
+                    <p class="mb-0 mt-2 text-muted">Time series forecasting (650 lines)</p>
+                </div>
+                <div class="file-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <strong>health_risk_assessor.php</strong>
+                    <span class="badge bg-danger ms-2">Health Risk</span>
+                    <p class="mb-0 mt-2 text-muted">Health risk assessment coordinator</p>
+                </div>
+                <div class="file-item">
+                    <i class="fas fa-brain"></i>
+                    <strong>ml_health_risk_assessor.php</strong>
+                    <span class="badge bg-info ms-2">ML Enhanced</span>
+                    <p class="mb-0 mt-2 text-muted">ML-powered health predictions</p>
+                </div>
+                <div class="file-item">
+                    <i class="fas fa-database"></i>
+                    <strong>sample_data_generator.php</strong>
+                    <span class="badge bg-secondary ms-2">Utility</span>
+                    <p class="mb-0 mt-2 text-muted">Generate sample data for testing</p>
+                </div>
+            </div>
+
+            <!-- ML Scripts -->
+            <div class="section-card">
+                <h3><i class="fas fa-robot"></i> ML Scripts</h3>
+                <div class="file-item">
+                    <i class="fas fa-chart-line"></i>
+                    <strong>ml_demand_forecast.py</strong>
+                    <span class="badge bg-warning ms-2">Forecasting</span>
+                    <p class="mb-0 mt-2 text-muted">Ensemble ML demand forecasting (RF + GB + LR)</p>
+                </div>
+                <div class="file-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <strong>ml_predict_advanced.py</strong>
+                    <span class="badge bg-danger ms-2">Health Prediction</span>
+                    <p class="mb-0 mt-2 text-muted">Animal health risk assessment</p>
+                </div>
+            </div>
+
+            <!-- Models -->
+            <div class="section-card">
+                <h3><i class="fas fa-database"></i> Models</h3>
+                <div class="file-item">
+                    <i class="fas fa-file-code"></i>
+                    <strong>*.json</strong>
+                    <span class="badge bg-secondary ms-2">Model Configs</span>
+                    <p class="mb-0 mt-2 text-muted">Model configuration files</p>
+                </div>
+            </div>
+
+            <!-- Documentation -->
+            <div class="section-card">
+                <h3><i class="fas fa-book"></i> Documentation</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="file-item">
+                            <i class="fas fa-file-alt"></i>
+                            <a href="docs/FLASK_API_README.md" class="text-decoration-none">
+                                <strong>FLASK_API_README.md</strong>
+                            </a>
+                            <p class="mb-0 mt-2 text-muted">Complete Flask API guide</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="file-item">
+                            <i class="fas fa-file-alt"></i>
+                            <a href="README.md" class="text-decoration-none">
+                                <strong>README.md</strong>
+                            </a>
+                            <p class="mb-0 mt-2 text-muted">ML system overview</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="section-card">
+                <h3><i class="fas fa-rocket"></i> Quick Actions</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-lg btn-primary w-100 mb-2" onclick="startFlask()">
+                            <i class="fas fa-play"></i> Start Flask Server
+                        </button>
+                        <small class="text-muted">Run start_flask.bat</small>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="api/test_flask_api.php" class="btn btn-lg btn-success w-100 mb-2">
+                            <i class="fas fa-vial"></i> Test API
+                        </a>
+                        <small class="text-muted">Open testing interface</small>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="../admin_ml_insights.php" class="btn btn-lg btn-info w-100 mb-2">
+                            <i class="fas fa-chart-bar"></i> View Dashboard
+                        </a>
+                        <small class="text-muted">Admin ML insights</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Folder Structure -->
+            <div class="section-card">
+                <h3><i class="fas fa-folder-tree"></i> Complete Folder Structure (33 files)</h3>
+                <pre class="bg-dark text-light p-3 rounded"><code>ml_system/
+├── api/ (11 files)              # Flask REST API & PHP Endpoints
+│   ├── ml_flask_api.py          # Flask server (9 endpoints)
+│   ├── get_ml_insights_flask.php
+│   ├── get_health_risk_flask.php
+│   ├── get_pharmaceutical_forecast.php
+│   ├── get_livestock_forecast.php
+│   ├── get_poultry_forecast.php
+│   └── ... (5 more API files)
+│
+├── includes/ (4 files)          # PHP ML Classes
+│   ├── arima_forecaster.php     # ARIMA forecasting
+│   ├── health_risk_assessor.php # Health risk logic
+│   ├── ml_health_risk_assessor.php # ML integration
+│   └── sample_data_generator.php
+│
+├── scripts/ (2 files)           # Python ML Scripts
+│   ├── ml_demand_forecast.py    # Ensemble forecasting
+│   └── ml_predict_advanced.py   # Health prediction
+│
+├── models/ (1 file)             # ML Models
+│   └── simple_health_risk_model.json
+│
+├── docs/ (3 files)              # Documentation
+│   ├── FLASK_API_README.md
+│   ├── ML_README.md
+│   └── ML_DEMAND_FORECASTING_README.md
+│
+└── Documentation & Utils (12 files)
+    ├── README.md, QUICK_START.md
+    ├── start_flask.bat, start_flask.sh
+    └── ... (8 more docs)</code></pre>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center mt-4">
+                <p class="text-muted">
+                    <i class="fas fa-info-circle"></i> For detailed documentation, see <code>README.md</code>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function checkFlaskStatus() {
+            const statusEl = document.getElementById('flask-status');
+            statusEl.innerHTML = '⏳ Checking...';
+            
+            try {
+                const response = await fetch('http://localhost:5000/health');
+                const data = await response.json();
+                
+                if (data.success && data.status === 'healthy') {
+                    statusEl.innerHTML = '🟢 Online';
+                    statusEl.className = 'status-online';
+                } else {
+                    statusEl.innerHTML = '🟡 Responding (unusual)';
+                    statusEl.className = 'status-offline';
+                }
+            } catch (error) {
+                statusEl.innerHTML = '⚫ Offline';
+                statusEl.className = 'status-offline';
+            }
+        }
+
+        function startFlask() {
+            alert('To start Flask server:\n\n' +
+                  'Windows: Double-click start_flask.bat\n' +
+                  'Linux/Mac: Run ./start_flask.sh\n\n' +
+                  'Or from command line:\n' +
+                  'cd api && python ml_flask_api.py');
+        }
+
+        // Check status on page load
+        window.addEventListener('load', checkFlaskStatus);
+        
+        // Auto-refresh status every 10 seconds
+        setInterval(checkFlaskStatus, 10000);
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+# Python Dependencies for Livestock Heatmap System
+# Install with: pip install -r requirements.txt
+
+# Core data processing
+pandas>=1.5.0
+numpy>=1.21.0
+
+# Machine learning
+scikit-learn>=1.1.0
+joblib>=1.1.0
+
+# Time series forecasting
+prophet>=1.1.0
+statsmodels>=0.13.0
+pmdarima>=2.0.0
+
+# Flask API
+Flask>=2.3.0
+Flask-CORS>=4.0.0
+
+# Database connectivity
+mysql-connector-python>=8.0.0
+
+# Additional utilities
+python-dateutil>=2.8.0
+matplotlib>=3.5.0
+seaborn>=0.11.0

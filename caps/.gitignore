@@ -1,0 +1,44 @@
+# Environment Configuration (NEVER commit these!)
+config.env.php
+.env
+*.env
+
+# Uploads (user-generated content)
+uploads/*
+!uploads/.htaccess
+
+# Logs
+logs/*
+*.log
+error.log
+
+# Temporary files
+*.tmp
+*.temp
+file_inventory.txt
+
+# Archive folder
+archive/
+
+# Test and debug files
+test_*.php
+check_*.php
+debug_*.php
+examine_*.php
+
+# IDE and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup files
+*.bak
+*.backup
+*_backup_*.sql
+
+# Documentation (optional - include if you want)
+# *.md
+# docs/
+

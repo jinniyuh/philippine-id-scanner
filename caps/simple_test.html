@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Dulao Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .debug { background-color: #f8f9fa; color: #495057; border: 1px solid #dee2e6; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Simple Dulao Validation Test</h1>
+    
+    <button onclick="testValidation()">Test Dulao ID Validation</button>
+    
+    <div id="result" class="debug">
+        Click the button to test validation
+    </div>
+
+    <script>
+        function testValidation() {
+            console.clear();
+            console.log('=== STARTING TEST ===');
+            
+            // Test OCR text from the Dulao ID
+            const ocrText = "PUROK STA. RITA, DULAO, CITY OF BAGO, NEGROS OCCIDENTAL";
+            console.log('Testing OCR Text:', ocrText);
+            
+            // Test the validation logic step by step
+            let result = true;
+            let message = '';
+            
+            // Step 1: Check for other cities
+            const otherCities = ['PULUPANDAN', 'TALISAY', 'BACOLOD', 'SILAY', 'VICTORIAS', 'CADIZ'];
+            let foundOtherCity = false;
+            
+            for (let city of otherCities) {
+                if (ocrText.toUpperCase().includes(city.toUpperCase())) {
+                    console.log('❌ Found other city:', city);
+                    foundOtherCity = true;
+                    break;
+                }
+            }
+            
+            if (foundOtherCity) {
+                result = false;
+                message = '❌ Other city found - should be rejected';
+            } else {
+                console.log('✅ No other cities found');
+            }
+            
+            // Step 2: Check for Bago City indicators
+            if (result) {
+                const bagoIndicators = ['BAGO CITY', 'CITY OF BAGO'];
+                let foundBagoIndicator = false;
+                
+                for (let indicator of bagoIndicators) {
+                    if (ocrText.toUpperCase().includes(indicator.toUpperCase())) {
+                        console.log('✅ Found Bago indicator:', indicator);
+                        foundBagoIndicator = true;
+                        break;
+                    }
+                }
+                
+                if (!foundBagoIndicator) {
+                    result = false;
+                    message = '❌ Bago City indicator not found';
+                } else {
+                    console.log('✅ Bago City indicator found');
+                }
+            }
+            
+            // Step 3: Check for barangay
+            if (result) {
+                const bagoBarangays = ['Abuanan', 'Alianza', 'Atipuluan', 'Bacong-Montilla', 'Bagroy', 'Balingasag',
+                    'Binubuhan', 'Busay', 'Calumangan', 'Caridad', 'Don Jorge L. Araneta', 'Dulao',
+                    'Ilijan', 'Lag-Asan', 'Ma-ao', 'Mailum', 'Malingin', 'Napoles', 'Pacol',
+                    'Poblacion', 'Sagasa', 'Sampinit', 'Tabunan', 'Taloc'];
+                
+                let foundBarangay = false;
+                
+                for (let barangay of bagoBarangays) {
+                    if (ocrText.toUpperCase().includes(barangay.toUpperCase())) {
+                        console.log('✅ Found barangay:', barangay);
+                        foundBarangay = true;
+                        break;
+                    }
+                }
+                
+                if (!foundBarangay) {
+                    result = false;
+                    message = '❌ No valid barangay found';
+                } else {
+                    console.log('✅ Valid barangay found');
+                }
+            }
+            
+            // Display result
+            const resultDiv = document.getElementById('result');
+            
+            if (result) {
+                resultDiv.className = 'result success';
+                resultDiv.innerHTML = '<strong>✅ SUCCESS!</strong><br>Dulao resident should be ACCEPTED<br><br>Expected: ✅ ACCEPTED<br>Actual: ✅ ACCEPTED<br>Status: ✅ CORRECT';
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '<strong>❌ FAILURE!</strong><br>Dulao resident is being REJECTED<br><br>Expected: ✅ ACCEPTED<br>Actual: ❌ REJECTED<br>Status: ❌ WRONG<br><br>Issue: ' + message;
+            }
+            
+            console.log('=== FINAL RESULT ===');
+            console.log('Expected: TRUE (should be accepted)');
+            console.log('Actual:', result);
+            console.log('Status:', result ? '✅ CORRECT' : '❌ WRONG');
+            
+            if (!result) {
+                console.log('Issue:', message);
+            }
+        }
+    </script>
+</body>
+</html>

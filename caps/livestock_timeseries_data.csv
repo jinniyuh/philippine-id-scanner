@@ -1,0 +1,121 @@
+date,barangay,latitude,longitude,animal_count,animal_type,health_status,disease_risk,season,weather_factor
+2023-01-01,Abuanan,10.5375,122.8333,42,Livestock,Healthy,Low,Dry,0.8
+2023-01-01,Alianza,10.5417,122.8417,35,Poultry,Healthy,Low,Dry,0.8
+2023-01-01,Atipuluan,10.5458,122.8500,48,Livestock,Needs Attention,Medium,Dry,0.8
+2023-01-01,Bacong-Montilla,10.5500,122.8583,62,Livestock,Healthy,Low,Dry,0.8
+2023-01-01,Bagroy,10.5542,122.8667,26,Poultry,Healthy,Low,Dry,0.8
+2023-01-01,Balingasag,10.5583,122.8750,38,Livestock,Healthy,Low,Dry,0.8
+2023-01-01,Binubuhan,10.5625,122.8833,54,Livestock,Needs Attention,Medium,Dry,0.8
+2023-01-01,Busay,10.5667,122.8917,30,Poultry,Healthy,Low,Dry,0.8
+2023-01-01,Calumangan,10.5708,122.9000,41,Livestock,Healthy,Low,Dry,0.8
+2023-01-01,Caridad,10.5750,122.9083,57,Livestock,Needs Attention,Medium,Dry,0.8
+2023-01-01,Don Jorge L. Araneta,10.5792,122.9167,32,Poultry,Healthy,Low,Dry,0.8
+2023-01-01,Dulao,10.5833,122.9250,46,Livestock,Healthy,Low,Dry,0.8
+2023-01-01,Ilijan,10.5875,122.9333,39,Livestock,Healthy,Low,Dry,0.8
+2023-01-01,Lag-Asan,10.5917,122.9417,52,Livestock,Needs Attention,High,Dry,0.8
+2023-01-01,Ma-ao,10.5958,122.9500,35,Poultry,Healthy,Low,Dry,0.8
+2023-01-01,Mailum,10.6000,122.9583,48,Livestock,Healthy,Low,Dry,0.8
+2023-01-01,Malingin,10.6042,122.9667,59,Livestock,Needs Attention,Medium,Dry,0.8
+2023-01-01,Napoles,10.6083,122.9750,31,Poultry,Healthy,Low,Dry,0.8
+2023-01-01,Pacol,10.6125,122.9833,44,Livestock,Healthy,Low,Dry,0.8
+2023-01-01,Poblacion,10.6167,122.9917,68,Livestock,Needs Attention,High,Dry,0.8
+2023-01-01,Sagasa,10.6208,123.0000,36,Poultry,Healthy,Low,Dry,0.8
+2023-01-01,Tabunan,10.6250,123.0083,51,Livestock,Healthy,Low,Dry,0.8
+2023-01-01,Taloc,10.6292,123.0167,43,Livestock,Healthy,Low,Dry,0.8
+2023-01-01,Sampinit,10.6333,123.0250,38,Poultry,Healthy,Low,Dry,0.8
+2023-02-01,Abuanan,10.5375,122.8333,44,Livestock,Healthy,Low,Dry,0.9
+2023-02-01,Alianza,10.5417,122.8417,37,Poultry,Healthy,Low,Dry,0.9
+2023-02-01,Atipuluan,10.5458,122.8500,50,Livestock,Needs Attention,Medium,Dry,0.9
+2023-02-01,Bacong-Montilla,10.5500,122.8583,64,Livestock,Healthy,Low,Dry,0.9
+2023-02-01,Bagroy,10.5542,122.8667,28,Poultry,Healthy,Low,Dry,0.9
+2023-02-01,Balingasag,10.5583,122.8750,40,Livestock,Healthy,Low,Dry,0.9
+2023-02-01,Binubuhan,10.5625,122.8833,56,Livestock,Needs Attention,Medium,Dry,0.9
+2023-02-01,Busay,10.5667,122.8917,32,Poultry,Healthy,Low,Dry,0.9
+2023-02-01,Calumangan,10.5708,122.9000,43,Livestock,Healthy,Low,Dry,0.9
+2023-02-01,Caridad,10.5750,122.9083,59,Livestock,Needs Attention,Medium,Dry,0.9
+2023-02-01,Don Jorge L. Araneta,10.5792,122.9167,34,Poultry,Healthy,Low,Dry,0.9
+2023-02-01,Dulao,10.5833,122.9250,48,Livestock,Healthy,Low,Dry,0.9
+2023-02-01,Ilijan,10.5875,122.9333,41,Livestock,Healthy,Low,Dry,0.9
+2023-02-01,Lag-Asan,10.5917,122.9417,54,Livestock,Needs Attention,High,Dry,0.9
+2023-02-01,Ma-ao,10.5958,122.9500,37,Poultry,Healthy,Low,Dry,0.9
+2023-02-01,Mailum,10.6000,122.9583,50,Livestock,Healthy,Low,Dry,0.9
+2023-02-01,Malingin,10.6042,122.9667,61,Livestock,Needs Attention,Medium,Dry,0.9
+2023-02-01,Napoles,10.6083,122.9750,33,Poultry,Healthy,Low,Dry,0.9
+2023-02-01,Pacol,10.6125,122.9833,46,Livestock,Healthy,Low,Dry,0.9
+2023-02-01,Poblacion,10.6167,122.9917,70,Livestock,Needs Attention,High,Dry,0.9
+2023-02-01,Sagasa,10.6208,123.0000,38,Poultry,Healthy,Low,Dry,0.9
+2023-02-01,Tabunan,10.6250,123.0083,53,Livestock,Healthy,Low,Dry,0.9
+2023-02-01,Taloc,10.6292,123.0167,45,Livestock,Healthy,Low,Dry,0.9
+2023-02-01,Sampinit,10.6333,123.0250,40,Poultry,Healthy,Low,Dry,0.9
+2023-03-01,Abuanan,10.5375,122.8333,46,Livestock,Healthy,Low,Dry,0.7
+2023-03-01,Alianza,10.5417,122.8417,39,Poultry,Healthy,Low,Dry,0.7
+2023-03-01,Atipuluan,10.5458,122.8500,52,Livestock,Needs Attention,Medium,Dry,0.7
+2023-03-01,Bacong-Montilla,10.5500,122.8583,66,Livestock,Healthy,Low,Dry,0.7
+2023-03-01,Bagroy,10.5542,122.8667,30,Poultry,Healthy,Low,Dry,0.7
+2023-03-01,Balingasag,10.5583,122.8750,42,Livestock,Healthy,Low,Dry,0.7
+2023-03-01,Binubuhan,10.5625,122.8833,58,Livestock,Needs Attention,Medium,Dry,0.7
+2023-03-01,Busay,10.5667,122.8917,34,Poultry,Healthy,Low,Dry,0.7
+2023-03-01,Calumangan,10.5708,122.9000,45,Livestock,Healthy,Low,Dry,0.7
+2023-03-01,Caridad,10.5750,122.9083,61,Livestock,Needs Attention,Medium,Dry,0.7
+2023-03-01,Don Jorge L. Araneta,10.5792,122.9167,36,Poultry,Healthy,Low,Dry,0.7
+2023-03-01,Dulao,10.5833,122.9250,50,Livestock,Healthy,Low,Dry,0.7
+2023-03-01,Ilijan,10.5875,122.9333,43,Livestock,Healthy,Low,Dry,0.7
+2023-03-01,Lag-Asan,10.5917,122.9417,56,Livestock,Needs Attention,High,Dry,0.7
+2023-03-01,Ma-ao,10.5958,122.9500,39,Poultry,Healthy,Low,Dry,0.7
+2023-03-01,Mailum,10.6000,122.9583,52,Livestock,Healthy,Low,Dry,0.7
+2023-03-01,Malingin,10.6042,122.9667,63,Livestock,Needs Attention,Medium,Dry,0.7
+2023-03-01,Napoles,10.6083,122.9750,35,Poultry,Healthy,Low,Dry,0.7
+2023-03-01,Pacol,10.6125,122.9833,48,Livestock,Healthy,Low,Dry,0.7
+2023-03-01,Poblacion,10.6167,122.9917,72,Livestock,Needs Attention,High,Dry,0.7
+2023-03-01,Sagasa,10.6208,123.0000,40,Poultry,Healthy,Low,Dry,0.7
+2023-03-01,Tabunan,10.6250,123.0083,55,Livestock,Healthy,Low,Dry,0.7
+2023-03-01,Taloc,10.6292,123.0167,47,Livestock,Healthy,Low,Dry,0.7
+2023-03-01,Sampinit,10.6333,123.0250,42,Poultry,Healthy,Low,Dry,0.7
+2023-04-01,Abuanan,10.5375,122.8333,48,Livestock,Healthy,Low,Transition,0.6
+2023-04-01,Alianza,10.5417,122.8417,41,Poultry,Healthy,Low,Transition,0.6
+2023-04-01,Atipuluan,10.5458,122.8500,54,Livestock,Needs Attention,Medium,Transition,0.6
+2023-04-01,Bacong-Montilla,10.5500,122.8583,68,Livestock,Healthy,Low,Transition,0.6
+2023-04-01,Bagroy,10.5542,122.8667,32,Poultry,Healthy,Low,Transition,0.6
+2023-04-01,Balingasag,10.5583,122.8750,44,Livestock,Healthy,Low,Transition,0.6
+2023-04-01,Binubuhan,10.5625,122.8833,60,Livestock,Needs Attention,Medium,Transition,0.6
+2023-04-01,Busay,10.5667,122.8917,36,Poultry,Healthy,Low,Transition,0.6
+2023-04-01,Calumangan,10.5708,122.9000,47,Livestock,Healthy,Low,Transition,0.6
+2023-04-01,Caridad,10.5750,122.9083,63,Livestock,Needs Attention,Medium,Transition,0.6
+2023-04-01,Don Jorge L. Araneta,10.5792,122.9167,38,Poultry,Healthy,Low,Transition,0.6
+2023-04-01,Dulao,10.5833,122.9250,52,Livestock,Healthy,Low,Transition,0.6
+2023-04-01,Ilijan,10.5875,122.9333,45,Livestock,Healthy,Low,Transition,0.6
+2023-04-01,Lag-Asan,10.5917,122.9417,58,Livestock,Needs Attention,High,Transition,0.6
+2023-04-01,Ma-ao,10.5958,122.9500,41,Poultry,Healthy,Low,Transition,0.6
+2023-04-01,Mailum,10.6000,122.9583,54,Livestock,Healthy,Low,Transition,0.6
+2023-04-01,Malingin,10.6042,122.9667,65,Livestock,Needs Attention,Medium,Transition,0.6
+2023-04-01,Napoles,10.6083,122.9750,37,Poultry,Healthy,Low,Transition,0.6
+2023-04-01,Pacol,10.6125,122.9833,50,Livestock,Healthy,Low,Transition,0.6
+2023-04-01,Poblacion,10.6167,122.9917,74,Livestock,Needs Attention,High,Transition,0.6
+2023-04-01,Sagasa,10.6208,123.0000,42,Poultry,Healthy,Low,Transition,0.6
+2023-04-01,Tabunan,10.6250,123.0083,57,Livestock,Healthy,Low,Transition,0.6
+2023-04-01,Taloc,10.6292,123.0167,49,Livestock,Healthy,Low,Transition,0.6
+2023-04-01,Sampinit,10.6333,123.0250,44,Poultry,Healthy,Low,Transition,0.6
+2023-05-01,Abuanan,10.5375,122.8333,50,Livestock,Healthy,Low,Wet,0.4
+2023-05-01,Alianza,10.5417,122.8417,43,Poultry,Healthy,Low,Wet,0.4
+2023-05-01,Atipuluan,10.5458,122.8500,56,Livestock,Needs Attention,Medium,Wet,0.4
+2023-05-01,Bacong-Montilla,10.5500,122.8583,70,Livestock,Healthy,Low,Wet,0.4
+2023-05-01,Bagroy,10.5542,122.8667,34,Poultry,Healthy,Low,Wet,0.4
+2023-05-01,Balingasag,10.5583,122.8750,46,Livestock,Healthy,Low,Wet,0.4
+2023-05-01,Binubuhan,10.5625,122.8833,62,Livestock,Needs Attention,Medium,Wet,0.4
+2023-05-01,Busay,10.5667,122.8917,38,Poultry,Healthy,Low,Wet,0.4
+2023-05-01,Calumangan,10.5708,122.9000,49,Livestock,Healthy,Low,Wet,0.4
+2023-05-01,Caridad,10.5750,122.9083,65,Livestock,Needs Attention,Medium,Wet,0.4
+2023-05-01,Don Jorge L. Araneta,10.5792,122.9167,40,Poultry,Healthy,Low,Wet,0.4
+2023-05-01,Dulao,10.5833,122.9250,54,Livestock,Healthy,Low,Wet,0.4
+2023-05-01,Ilijan,10.5875,122.9333,47,Livestock,Healthy,Low,Wet,0.4
+2023-05-01,Lag-Asan,10.5917,122.9417,60,Livestock,Needs Attention,High,Wet,0.4
+2023-05-01,Ma-ao,10.5958,122.9500,43,Poultry,Healthy,Low,Wet,0.4
+2023-05-01,Mailum,10.6000,122.9583,56,Livestock,Healthy,Low,Wet,0.4
+2023-05-01,Malingin,10.6042,122.9667,67,Livestock,Needs Attention,Medium,Wet,0.4
+2023-05-01,Napoles,10.6083,122.9750,39,Poultry,Healthy,Low,Wet,0.4
+2023-05-01,Pacol,10.6125,122.9833,52,Livestock,Healthy,Low,Wet,0.4
+2023-05-01,Poblacion,10.6167,122.9917,76,Livestock,Needs Attention,High,Wet,0.4
+2023-05-01,Sagasa,10.6208,123.0000,44,Poultry,Healthy,Low,Wet,0.4
+2023-05-01,Tabunan,10.6250,123.0083,59,Livestock,Healthy,Low,Wet,0.4
+2023-05-01,Taloc,10.6292,123.0167,51,Livestock,Healthy,Low,Wet,0.4
+2023-05-01,Sampinit,10.6333,123.0250,46,Poultry,Healthy,Low,Wet,0.4

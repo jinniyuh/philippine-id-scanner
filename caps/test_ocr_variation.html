@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test OCR Variation Fix</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .debug { background-color: #f8f9fa; color: #495057; border: 1px solid #dee2e6; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test OCR Variation Fix</h1>
+    
+    <div class="debug">
+        <strong>Testing the exact OCR text from your console:</strong><br>
+        Text: "CITY OF H L BAGO" (from the OCR error)
+    </div>
+    
+    <button onclick="testOCRVariation()">Test OCR Variation Fix</button>
+    
+    <div id="result" class="debug">
+        Click the button to test the OCR variation fix
+    </div>
+
+    <script>
+        function testOCRVariation() {
+            console.clear();
+            console.log('=== TESTING OCR VARIATION FIX ===');
+            
+            // Test the exact OCR text that was failing
+            const ocrText = "CANDELARIO, PAUL JOSHUA, MACAHILAS BLK 21 LOT 16 MARINA BAY SUBD LAG ASAN CITY OF H L BAGO NEGROS OCCIDENTAL PHILIPPINES 6101";
+            console.log('Testing OCR Text:', ocrText);
+            
+            let result = true;
+            let message = '';
+            
+            // Test the new validation logic
+            const bagoIndicators = [
+                'BAGO CITY',
+                'CITY OF BAGO',
+                'CITY OF H L BAGO',  // OCR variation
+                'CITY OF H.L BAGO',  // OCR variation
+                'CITY OF HL BAGO'    // OCR variation
+            ];
+            
+            let foundBagoIndicator = false;
+            let matchedIndicator = '';
+            
+            console.log('\n--- STEP 1: Check specific indicators ---');
+            for (let indicator of bagoIndicators) {
+                if (ocrText.toUpperCase().includes(indicator.toUpperCase())) {
+                    foundBagoIndicator = true;
+                    matchedIndicator = indicator;
+                    console.log('✅ Found Bago indicator:', indicator);
+                    break;
+                }
+            }
+            
+            if (!foundBagoIndicator) {
+                console.log('\n--- STEP 2: Check regex pattern ---');
+                const cityOfBagoPattern = /CITY\s+OF\s+[A-Z\s\.]*BAGO/i;
+                if (cityOfBagoPattern.test(ocrText)) {
+                    foundBagoIndicator = true;
+                    matchedIndicator = 'CITY OF [OCR VARIATION] BAGO';
+                    console.log('✅ Found Bago indicator (OCR variation): CITY OF [variation] BAGO');
+                } else {
+                    console.log('❌ No Bago pattern found with regex');
+                    result = false;
+                    message = '❌ OCR variation fix failed';
+                }
+            }
+            
+            // Test barangay check
+            if (result) {
+                console.log('\n--- STEP 3: Check for barangay ---');
+                const bagoBarangays = ['Lag-Asan', 'LAG ASAN'];
+                let foundBarangay = false;
+                
+                for (let barangay of bagoBarangays) {
+                    if (ocrText.toUpperCase().includes(barangay.toUpperCase())) {
+                        foundBarangay = true;
+                        console.log('✅ Found barangay:', barangay);
+                        break;
+                    }
+                }
+                
+                if (!foundBarangay) {
+                    result = false;
+                    message = '❌ Barangay not found';
+                }
+            }
+            
+            // Display result
+            const resultDiv = document.getElementById('result');
+            
+            if (result) {
+                resultDiv.className = 'result success';
+                resultDiv.innerHTML = `
+                    <strong>✅ OCR VARIATION FIX SUCCESS!</strong><br>
+                    The fix is working correctly<br><br>
+                    <strong>Matched indicator:</strong> ${matchedIndicator}<br>
+                    <strong>Expected Result:</strong> ✅ ACCEPTED<br>
+                    <strong>Actual Result:</strong> ✅ ACCEPTED<br>
+                    <strong>Status:</strong> ✅ CORRECT<br><br>
+                    <strong>If registration page still shows error:</strong><br>
+                    • Browser cache issue<br>
+                    • Try Ctrl+F5 or incognito mode<br>
+                    • Check browser console for logs
+                `;
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <strong>❌ OCR VARIATION FIX FAILED!</strong><br>
+                    The fix is not working<br><br>
+                    <strong>Issue:</strong> ${message}<br>
+                    <strong>Expected Result:</strong> ✅ ACCEPTED<br>
+                    <strong>Actual Result:</strong> ❌ REJECTED<br>
+                    <strong>Status:</strong> ❌ WRONG<br><br>
+                    <strong>This indicates the fix needs more work!</strong>
+                `;
+            }
+            
+            console.log('\n=== FINAL RESULT ===');
+            console.log('Expected: TRUE (should be accepted)');
+            console.log('Actual:', result);
+            console.log('Status:', result ? '✅ CORRECT' : '❌ WRONG');
+            
+            if (!result) {
+                console.log('Issue:', message);
+            }
+        }
+    </script>
+</body>
+</html>

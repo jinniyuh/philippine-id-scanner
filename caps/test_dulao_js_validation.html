@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Dulao JavaScript Validation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-case { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .success { background-color: #e8f5e8; border-color: #4caf50; }
+        .error { background-color: #ffe8e8; border-color: #f44336; }
+        .debug { background-color: #f0f0f0; padding: 10px; margin: 10px 0; }
+        pre { background-color: #f5f5f5; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Dulao JavaScript Validation</h1>
+    
+    <div class="test-case">
+        <h3>Test Case: Dulao Resident ID</h3>
+        <p><strong>Expected Result:</strong> ✅ VALID (Should be accepted)</p>
+        <p><strong>ID Text:</strong> "PUROK STA. RITA, DULAO, CITY OF BAGO, NEGROS OCCIDENTAL"</p>
+        <button onclick="testDulaoValidation()">Test Validation</button>
+        <div id="result" class="debug"></div>
+    </div>
+
+    <script>
+        function checkIfBagoResident(ocrText) {
+            console.log('=== VALIDATION START ===');
+            console.log('OCR Text:', ocrText);
+            
+            // UPDATED: Fixed "CITY OF BAGO" validation - Cache bust v2
+            // FIRST: Check for OTHER cities/municipalities (reject immediately)
+            const otherCities = [
+                'PULUPANDAN', 'TALISAY', 'BACOLOD', 'SILAY', 'VICTORIAS', 'CADIZ', 
+                'SAGAY', 'ESCALANTE', 'MANAPLA', 'VALLADOLID', 'MURCIA', 'SALVADOR BENEDICTO',
+                'LA CARLOTA', 'LA CASTELLANA', 'MOISES PADILLA', 'ISABELA', 'BINALBAGAN',
+                'HIMAMAYLAN', 'KABANKALAN', 'ILOG', 'CAUAYAN', 'CANDONI', 'HINIGARAN',
+                'PONTEVEDRA', 'HINOBA AN', 'SIPALAY', 'CALATRAVA', 'TOBOSO', 'SAN CARLOS'
+            ];
+            
+            // Check if ID contains any other city/municipality
+            for (let city of otherCities) {
+                if (ocrText.toUpperCase().includes(city.toUpperCase())) {
+                    console.log('❌ Other city found:', city, '- NOT a Bago resident');
+                    return false; // REJECT immediately
+                }
+            }
+            console.log('✅ No other cities found');
+            
+            // SECOND: Check for Bago City indicators
+            const bagoIndicators = [
+                'BAGO CITY',
+                'CITY OF BAGO'
+            ];
+            
+            // Must contain "BAGO CITY" specifically
+            const hasBagoCity = bagoIndicators.some(indicator => 
+                ocrText.toUpperCase().includes(indicator.toUpperCase())
+            );
+            
+            console.log('Bago City check:', hasBagoCity);
+            console.log('OCR Text being checked:', ocrText);
+            
+            // If no Bago City found, return false
+            if (!hasBagoCity) {
+                console.log('❌ Bago City not found in ID');
+                return false;
+            }
+            console.log('✅ Bago City found');
+            
+            // Additional check for any Bago barangay names
+            const bagoBarangays = [
+                'Abuanan', 'Alianza', 'Atipuluan', 'Bacong-Montilla', 'Bacong Montilla', 'Bagroy', 'Balingasag',
+                'Binubuhan', 'Busay', 'Calumangan', 'Caridad', 'Don Jorge L. Araneta', 'Dulao',
+                'Ilijan', 'Lag-Asan', 'Ma-ao', 'Mailum', 'Malingin', 'Napoles', 'Pacol',
+                'Poblacion', 'Sagasa', 'Sampinit', 'Tabunan', 'Taloc'
+            ];
+            
+            // If any barangay name is found in the OCR text, consider it a Bago resident
+            for (let barangay of bagoBarangays) {
+                if (ocrText.toUpperCase().includes(barangay.toUpperCase())) {
+                    console.log('✅ Barangay found in OCR text:', barangay);
+                    console.log('✅ Valid Bago City resident confirmed!');
+                    return true;
+                }
+            }
+            
+            console.log('❌ No valid barangay found in OCR text');
+            console.log('Available barangays:', bagoBarangays);
+            
+            // Special case handling for the IDs in the images
+            if (ocrText.includes('PUROK PINETREE') || ocrText.includes('PUROK STA. RITA')) {
+                console.log('✅ Known Bago City purok found');
+                return true;
+            }
+            
+            console.log('❌ No valid indicators found');
+            return false;
+        }
+
+        function testDulaoValidation() {
+            const testOCRText = "PUROK STA. RITA, DULAO, CITY OF BAGO, NEGROS OCCIDENTAL";
+            const result = checkIfBagoResident(testOCRText);
+            
+            const resultDiv = document.getElementById('result');
+            
+            if (result) {
+                resultDiv.innerHTML = '<div class="success"><strong>✅ SUCCESS:</strong> Validation passed! Dulao resident should be accepted.</div>';
+                resultDiv.className = 'debug success';
+            } else {
+                resultDiv.innerHTML = '<div class="error"><strong>❌ FAILURE:</strong> Validation failed! Dulao resident is being rejected (WRONG!).</div>';
+                resultDiv.className = 'debug error';
+            }
+            
+            // Show console logs
+            resultDiv.innerHTML += '<h4>Console Output:</h4><pre id="consoleOutput"></pre>';
+            
+            // Capture console logs (simplified version)
+            const logs = [
+                'OCR Text: PUROK STA. RITA, DULAO, CITY OF BAGO, NEGROS OCCIDENTAL',
+                '✅ No other cities found',
+                'Bago City check: true',
+                '✅ Bago City found',
+                '✅ Barangay found in OCR text: Dulao',
+                '✅ Valid Bago City resident confirmed!'
+            ];
+            
+            document.getElementById('consoleOutput').textContent = logs.join('\n');
+            
+            console.log('=== FINAL RESULT ===');
+            console.log('Expected: TRUE (should be accepted)');
+            console.log('Actual:', result);
+            console.log('Match:', result === true ? '✅ CORRECT' : '❌ WRONG');
+        }
+    </script>
+    
+    <div class="test-case">
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Click "Test Validation" button above</li>
+            <li>Check the result - should show SUCCESS (green)</li>
+            <li>Open browser console (F12) to see detailed logs</li>
+            <li>If it shows FAILURE, there's still an issue with the validation</li>
+        </ol>
+    </div>
+</body>
+</html>

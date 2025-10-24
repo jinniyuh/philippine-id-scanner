@@ -1,0 +1,117 @@
+📋 COMPLETE FILE UPLOAD LIST FOR LIVE SERVER
+============================================
+
+🔴 CRITICAL FILES - MUST UPLOAD (Main Files):
+----------------------------------------------
+1. login.php
+   - Updated Bago City validation (JavaScript)
+   - Ultra flexible pattern matching (50 char range)
+
+2. includes/bago_validation.php
+   - Updated PHP validation functions
+   - Matches JavaScript validation logic
+
+3. includes/bago_config.php
+   - Database-driven configuration
+   - Required by bago_validation.php
+
+4. includes/security.php
+   - Security headers and functions
+   - Required by login.php (line 5)
+
+5. includes/activity_logger.php
+   - Activity logging functions
+   - Required by login.php (line 4)
+
+6. includes/conn.php
+   - Database connection
+   - Required by login.php (line 3)
+
+7. index.php
+   - Removed Register button from navigation
+   - Added dynamic announcement loading
+
+8. admin_dashboard.php
+   - Added Announcement management box
+   - Added modal for editing announcements
+
+9. get_announcement.php (NEW)
+   - API to fetch latest announcement
+
+10. save_announcement.php (NEW)
+    - API to save/update announcements
+
+
+🟡 RECOMMENDED FILES (If You Have Them):
+-----------------------------------------
+11. includes/csrf.php (if used)
+12. includes/perform_ocr.php (if used for ID scanning)
+
+
+📂 UPLOAD STRUCTURE:
+--------------------
+YOUR_LIVE_SERVER/bagovetims/
+├── index.php                              ← Upload
+├── login.php                              ← Upload
+├── admin_dashboard.php                    ← Upload
+├── get_announcement.php                   ← Upload (NEW)
+├── save_announcement.php                  ← Upload (NEW)
+└── includes/
+    ├── conn.php                           ← Upload
+    ├── activity_logger.php                ← Upload
+    ├── security.php                       ← Upload (MISSING - causing error)
+    ├── bago_validation.php                ← Upload
+    ├── bago_config.php                    ← Upload
+    ├── csrf.php                           ← Upload (if exists)
+    └── perform_ocr.php                    ← Upload (if exists)
+
+
+✅ UPLOAD CHECKLIST:
+--------------------
+Step 1: Upload to includes/ folder:
+[ ] includes/security.php          ← FIX THE CURRENT ERROR
+[ ] includes/activity_logger.php
+[ ] includes/bago_validation.php
+[ ] includes/bago_config.php
+[ ] includes/conn.php
+
+Step 2: Upload to root folder:
+[ ] login.php
+[ ] index.php
+[ ] admin_dashboard.php
+[ ] get_announcement.php (NEW)
+[ ] save_announcement.php (NEW)
+
+Step 3: After uploading:
+[ ] Clear browser cache (Ctrl + F5)
+[ ] Test login page loads without errors
+[ ] Test Bago City resident ID validation
+[ ] Verify non-Bago residents are rejected
+[ ] Test announcement system in admin dashboard
+[ ] Verify announcement appears on homepage
+
+
+🚨 PRIORITY FIX:
+----------------
+The IMMEDIATE error is:
+- includes/security.php is MISSING on live server
+
+Upload this file FIRST to fix the current error!
+
+
+📝 NOTES:
+---------
+- Make sure file permissions are correct (644 for PHP files)
+- Backup existing files before uploading
+- Test after each upload to ensure no errors
+- Check error logs if issues persist
+
+
+🎯 EXPECTED RESULT AFTER UPLOAD:
+---------------------------------
+✅ No more "security.php" error
+✅ Login page loads correctly
+✅ Bago City residents with OCR variations are accepted
+✅ Non-Bago residents are still rejected
+✅ Ultra flexible validation works (50 char range for NEGROS OCCIDENTAL)
+
